@@ -1,0 +1,15 @@
+{
+  "name": "Bugatti Tourbillon · 为永恒而生",
+  "short_name": "Tourbillon",
+  "description": "布加迪 Tourbillon 中文介绍：8.3 升自然吸气 V16 与三电机混动，1800 马力，限量 250 台。",
+  "lang": "zh-CN",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050507",
+  "theme_color": "#004bfa",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
