@@ -20,14 +20,14 @@
 <body>
 
 <script>
-/* 自动语言：海外访客首次进站自动切换英文版（国内默认中文；本地判断失败则不跳转） */
+/* 自动语言：海外访客自动进入英文版；用户主动选择过中文则不跳转（国内默认中文，判断失败保持中文） */
 (function () {
-  if (localStorage.getItem('bugatti-auto-lang')) return;
+  if (localStorage.getItem('bugatti-lang') === 'zh') return;
   fetch('https://ipapi.co/json/')
     .then(function (r) { return r.json(); })
     .then(function (d) {
       if (d && d.country_code && d.country_code !== 'CN') {
-        localStorage.setItem('bugatti-auto-lang', 'en');
+        localStorage.setItem('bugatti-lang', 'en');
         location.replace('en.html');
       }
     }).catch(function () {});
