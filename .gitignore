@@ -1,6 +1,4 @@
-﻿# 视频放独立公开仓库，经 jsDelivr CDN（见 README-R2.md）
-*.mp4
-# 备份与临时文件
+﻿# 备份与临时文件
 index.user-backup.html
 *.zip
 Thumbs.db
