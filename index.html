@@ -19,6 +19,21 @@
 </head>
 <body>
 
+<script>
+/* 自动语言：海外访客首次进站自动切换英文版（国内默认中文；本地判断失败则不跳转） */
+(function () {
+  if (localStorage.getItem('bugatti-auto-lang')) return;
+  fetch('https://ipapi.co/json/')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d && d.country_code && d.country_code !== 'CN') {
+        localStorage.setItem('bugatti-auto-lang', 'en');
+        location.replace('en.html');
+      }
+    }).catch(function () {});
+})();
+</script>
+
 <div class="cursor" aria-hidden="true"><span></span></div>
 <div class="glow" aria-hidden="true"></div>
 
