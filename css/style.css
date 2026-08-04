@@ -869,27 +869,46 @@ button { font-family: inherit; color: inherit; background: none; border: none; c
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 18px;
+  gap: 28px;
   flex-wrap: wrap;
-  padding: 24px 0 28px;
-  margin-bottom: 36px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.footer__portal-label {
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  color: var(--dim);
-}
-.footer__portal-link {
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  color: var(--txt);
-  padding: 11px 20px;
+  padding: 36px 40px;
+  margin-bottom: 40px;
   border: 1px solid var(--line2);
-  transition: border-color 0.3s, color 0.3s;
+  background: linear-gradient(120deg, var(--blue-soft), transparent 70%);
 }
-.footer__portal-link:hover { border-color: var(--blue); color: #fff; }
+.footer__portal-text { max-width: 660px; }
+.footer__portal-kicker {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.footer__portal-title {
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--txt);
+  line-height: 1.5;
+}
+.footer__portal-desc {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--faint);
+  margin-top: 10px;
+}
+.footer__portal-btn {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #fff;
+  padding: 15px 30px;
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.footer__portal-btn:hover {
+  background: transparent;
+  color: var(--blue);
+  box-shadow: 0 0 24px rgba(0, 75, 250, 0.35);
+}
 .footer__top {
   display: flex;
   justify-content: flex-start;
