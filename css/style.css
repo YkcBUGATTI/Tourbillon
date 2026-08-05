@@ -2903,3 +2903,33 @@ html,body{overflow-x:hidden;max-width:100%}
 .footer__contact a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
 .footer__contact a[href*="bilibili"]:hover{border-color:#00a1d6;background:rgba(0,161,214,.16);color:#fff;box-shadow:0 8px 26px rgba(0,161,214,.28)}
 .footer__contact a[href*="youtube"]:hover{border-color:#ff0033;background:rgba(255,0,51,.14);color:#fff;box-shadow:0 8px 26px rgba(255,0,51,.24)}
+
+/* ===== 联系方式卡片按钮(v3,门户同款) ===== */
+.footer__contact-btns{display:flex;gap:16px;flex-wrap:wrap;margin-left:6px}
+.footer__contact-btns .sbtn{
+  display:inline-flex;align-items:center;gap:13px;
+  padding:13px 20px;min-width:236px;justify-content:flex-start;
+  border:1px solid rgba(255,255,255,.22);border-radius:12px;
+  background:rgba(255,255,255,.05);
+  color:rgba(255,255,255,.92);
+  text-decoration:none;
+  transition:transform .35s ease,border-color .35s,background .35s,box-shadow .45s;
+}
+.footer__contact-btns .sbtn::before{content:none}
+.footer__contact-btns .sbtn svg{flex:none;width:22px;height:22px;opacity:.9;transition:color .3s}
+.footer__contact-btns .sbtn__txt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex:1;min-width:0}
+.footer__contact-btns .sbtn__txt b{font-size:13px;letter-spacing:.24em;font-weight:700;line-height:1.2}
+.footer__contact-btns .sbtn__txt small{font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.footer__contact-btns .sbtn__arrow{font-style:normal;font-size:15px;opacity:0;transform:translateX(-7px);transition:opacity .3s,transform .3s}
+.footer__contact-btns .sbtn:hover{transform:translateY(-3px)}
+.footer__contact-btns .sbtn:hover .sbtn__arrow{opacity:1;transform:none}
+.footer__contact-btns .sbtn--bili:hover{border-color:#00a1d6;background:rgba(0,161,214,.14);color:#fff;box-shadow:0 14px 34px -14px rgba(0,161,214,.5)}
+.footer__contact-btns .sbtn--bili:hover svg{color:#00a1d6}
+.footer__contact-btns .sbtn--bili:hover .sbtn__txt small{color:#7fd4ef}
+.footer__contact-btns .sbtn--yt:hover{border-color:#ff0033;background:rgba(255,0,51,.13);color:#fff;box-shadow:0 14px 34px -14px rgba(255,0,51,.5)}
+.footer__contact-btns .sbtn--yt:hover svg{color:#ff4d66}
+.footer__contact-btns .sbtn--yt:hover .sbtn__txt small{color:#ff9aa8}
+@media(max-width:560px){
+  .footer__contact-btns{flex-direction:column;width:100%;margin-left:0}
+  .footer__contact-btns .sbtn{width:100%;min-width:0}
+}
