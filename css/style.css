@@ -916,6 +916,7 @@ button { font-family: inherit; color: inherit; background: none; border: none; c
   letter-spacing: 0.22em;
   color: var(--dim);
   margin-top: 14px;
+  margin-bottom: 36px;
 }
 .footer__portal-desc {
   font-size: 14px;
@@ -2876,3 +2877,29 @@ section[id] { scroll-margin-top: 72px; }
 .lang-btn:hover::after {
   transform: scaleX(1);
 }
+
+/* 横向固定：防止手机左滑出现右侧黑边 */
+html,body{overflow-x:hidden;max-width:100%}
+/* 菜单按钮置顶，确保点击不被任何层拦截 */
+.nav__menu-btn{position:relative;z-index:2}
+/* 导航容器不拦截点击（交互由子元素承接） */
+.nav__inner{pointer-events:none}
+.nav__inner > *{pointer-events:auto}
+
+/* 页脚联系方式（卡片样式） */
+.footer__contact{display:flex;align-items:center;gap:14px;padding:24px 0;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:26px;flex-wrap:wrap}
+.footer__contact-label{font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.45);margin-right:6px}
+.footer__contact a{
+  display:inline-flex;align-items:center;gap:11px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.05);
+  border-radius:6px;
+  padding:13px 28px;
+  font-size:13px;letter-spacing:.22em;color:rgba(255,255,255,.9);
+  text-decoration:none;
+  transition:border-color .3s,background .3s,transform .3s,box-shadow .3s;
+}
+.footer__contact a::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.9}
+.footer__contact a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.footer__contact a[href*="bilibili"]:hover{border-color:#00a1d6;background:rgba(0,161,214,.16);color:#fff;box-shadow:0 8px 26px rgba(0,161,214,.28)}
+.footer__contact a[href*="youtube"]:hover{border-color:#ff0033;background:rgba(255,0,51,.14);color:#fff;box-shadow:0 8px 26px rgba(255,0,51,.24)}
