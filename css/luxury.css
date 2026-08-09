@@ -1,0 +1,209 @@
+/* ============================================================
+   Bugatti Tourbillon · Luxury 增强层
+   深蓝 × 钛银白 · 精密机械（陀飞轮）主题
+   追加于 css/style.css 之后加载；只新增/覆盖样式，
+   不改动 style.css 任何既有规则。
+   点缀色沿用站内既有钛银金属 --metal 与品牌蓝 --blue，
+   不引入金色。
+   ============================================================ */
+
+/* ---------- 品牌色系统扩展 ---------- */
+:root {
+  --steel: #c9ccd3;                        /* 钛银（与站内 --metal 一致） */
+  --steel-bright: #f2f4f8;                 /* 亮银白：渐变高光端 */
+  --steel-dim: rgba(201, 204, 211, 0.32);  /* 银灰：细线、描边 */
+  --steel-soft: rgba(201, 204, 211, 0.10); /* 银灰：浅底、光斑 */
+  --blue-lux: #6f9dff;                     /* 明亮蓝：光效点缀（站内既有色） */
+  --ink: #06070d;                          /* 深蓝黑：玻璃底、阴影基色 */
+  --ink-glass: rgba(8, 10, 17, 0.72);      /* 玻璃拟态底 */
+  --shadow-lux: 0 26px 60px -28px rgba(0, 0, 0, 0.85);
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- 全局质感：深蓝黑微光底（只叠加 background-image，不改底色） ---------- */
+body {
+  background-image:
+    radial-gradient(1200px 560px at 88% -10%, rgba(0, 75, 250, 0.09), transparent 60%),
+    radial-gradient(960px 520px at -12% 32%, rgba(201, 204, 211, 0.035), transparent 55%);
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--blue); color: #fff; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--blue-lux);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- 排版层级：标题/英文小标/章节标签 ---------- */
+.sec-title { letter-spacing: 0.02em; }
+.sec-title::after { background: linear-gradient(90deg, var(--blue), transparent); }
+.sec-title-en { color: var(--steel-bright); letter-spacing: 0.22em; }
+.sec-tag { text-shadow: 0 0 16px rgba(0, 75, 250, 0.35); }
+.sec-lead { color: #c8c8d2; }
+
+/* ---------- 导航：滚动实底后深蓝黑玻璃 + 蓝色底线 + 阴影 ---------- */
+.nav.is-solid {
+  background: var(--ink-glass);
+  box-shadow: 0 14px 44px -22px rgba(0, 0, 0, 0.85);
+}
+.nav.is-solid::after {
+  content: '';
+  position: absolute;
+  left: 24px; right: 24px; bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(111, 157, 255, 0.45), transparent);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* 锚点跳转预留导航高度（不改变 scroll-behavior，不干扰现有 JS 瞬时定位） */
+html { scroll-padding-top: 88px; }
+
+/* ---------- Hero：陀飞轮光效 + 金属细节 ---------- */
+.hero__veil {
+  background:
+    radial-gradient(56% 44% at 74% 26%, rgba(201, 204, 211, 0.10), rgba(201, 204, 211, 0.03) 45%, transparent 70%),
+    radial-gradient(46% 36% at 22% 62%, rgba(0, 75, 250, 0.16), transparent 68%),
+    radial-gradient(120% 90% at 50% 110%, rgba(5, 5, 7, 0.95) 0%, rgba(5, 5, 7, 0.55) 45%, rgba(5, 5, 7, 0.25) 75%, rgba(5, 5, 7, 0.4) 100%),
+    linear-gradient(to top, var(--bg) 0%, transparent 28%);
+}
+/* 缓慢旋转的蓝白光带：机械腕表游丝意象 */
+.hero__veil::before {
+  content: '';
+  position: absolute;
+  inset: -45%;
+  background: conic-gradient(from 0deg,
+    transparent 0deg, rgba(201, 204, 211, 0.08) 38deg, transparent 92deg,
+    rgba(0, 75, 250, 0.08) 190deg, transparent 250deg,
+    rgba(201, 204, 211, 0.08) 318deg, transparent 360deg);
+  animation: lux-rotate 52s linear infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+@keyframes lux-rotate { to { transform: rotate(1turn); } }
+
+.hero__title {
+  text-shadow:
+    0 2px 34px rgba(111, 157, 255, 0.18),
+    0 0 110px rgba(0, 75, 250, 0.22);
+}
+/* 数据数字：钛银金属渐变（与站内 --metal 同源） */
+.hero__specs b {
+  background: linear-gradient(150deg, #ffffff 0%, #d7dbe2 48%, #9aa3b3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.hero__line { background: var(--steel-dim); }
+.hero__line::after { background: linear-gradient(180deg, transparent, var(--blue-lux)); }
+
+/* ---------- 卡片：浮起 + 深阴影 + 银蓝描边（微交互） ---------- */
+.hcard, .dcard, .tcard, .bstat, .modes__panel, .ptcard, .modecard, .webcard, .tour__card, .dcard2 {
+  position: relative;
+  transition:
+    transform 0.5s var(--ease-lux),
+    box-shadow 0.5s var(--ease-lux),
+    border-color 0.5s var(--ease-lux),
+    background-color 0.5s var(--ease-lux);
+}
+.hcard:hover, .dcard:hover, .tcard:hover, .bstat:hover, .modes__panel:hover,
+.ptcard:hover, .modecard:hover, .webcard:hover, .tour__card:hover, .dcard2:hover {
+  border-color: rgba(111, 157, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    var(--shadow-lux),
+    0 0 30px -14px rgba(0, 75, 250, 0.35);
+  transform: translateY(-6px);
+}
+
+/* .dcard 复用 main.js 已写入的 --mx/--my：鼠标高光保持品牌蓝 */
+.dcard::after {
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(0, 75, 250, 0.18), transparent 62%);
+}
+
+/* 其余大卡片：蓝色径向光跟随鼠标（--mx/--my 由 luxury.js 写入） */
+.hcard::after, .bstat::after, .modes__panel::after, .ptcard::after, .tour__card::after, .dcard2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(0, 75, 250, 0.13), transparent 62%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.hcard:hover::after, .bstat:hover::after, .modes__panel:hover::after,
+.ptcard:hover::after, .tour__card:hover::after, .dcard2:hover::after { opacity: 1; }
+
+/* ---------- 玻璃拟态（克制使用） ---------- */
+.menu-overlay { background: rgba(6, 7, 13, 0.86); }
+.hotspot::after {
+  background: var(--ink-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(111, 157, 255, 0.4);
+}
+
+/* ---------- 章节卡：钛银编号 + 蓝色进度线辉光 ---------- */
+.cb__no { color: var(--metal); }
+.chapter-break::after {
+  background: linear-gradient(90deg, var(--blue), rgba(0, 75, 250, 0.25), transparent);
+  box-shadow: 0 0 16px rgba(0, 75, 250, 0.4);
+}
+
+/* ---------- 滚动进度表盘：品牌蓝描边 + 辉光 ---------- */
+.scroll-gauge .sg__bar {
+  stroke: var(--blue-lux);
+  filter: drop-shadow(0 0 4px rgba(0, 75, 250, 0.6));
+}
+
+/* ---------- 页脚 ---------- */
+.footer__top { border-top: 1px solid var(--steel-dim); }
+.footer__portal-title { text-shadow: 0 0 30px rgba(0, 75, 250, 0.28); }
+.footer__portal-dot { color: var(--blue-lux); }
+
+/* ---------- 补充滚动显现（类由 luxury.js 注入，不重复观察已有 .reveal） ---------- */
+.lux-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-lux), transform 0.8s var(--ease-lux);
+}
+.lux-reveal.is-in { opacity: 1; transform: none; }
+
+/* ---------- 响应式细节 ---------- */
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .hero__title { font-size: clamp(56px, 15vw, 100px); }
+  .hero__specs { gap: 22px; flex-wrap: wrap; }
+  .hero__scroll { right: 18px; bottom: 20px; }
+}
+@media (max-width: 480px) {
+  .hero__kicker { letter-spacing: 0.24em; }
+  .hero__sub { letter-spacing: 0.16em; }
+  .hero__specs { gap: 16px 20px; }
+}
+
+/* ---------- 无障碍降级：用户偏好减少动效时全部关闭 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__veil::before,
+  .hero__line::after { animation: none !important; }
+  .hcard, .dcard, .tcard, .bstat, .modes__panel, .ptcard, .modecard, .webcard, .tour__card, .dcard2 {
+    transition: none !important;
+  }
+  .hcard::after, .bstat::after, .modes__panel::after, .ptcard::after, .tour__card::after, .dcard2::after,
+  .dcard::after { transition: none !important; }
+  .lux-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- 打印保护：style.css 的 print 块早于本文件，这里兜底 ---------- */
+@media print {
+  body { background-image: none !important; }
+  .hero__veil::before,
+  .nav.is-solid::after { display: none !important; }
+}

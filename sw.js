@@ -1,11 +1,13 @@
 /* Bugatti Tourbillon · Service Worker（离线缓存） */
-const CACHE = 'tourbillon-v1';
+const CACHE = 'tourbillon-v2';
 const CORE = [
   './',
   './index.html',
   './en.html',
   './css/style.css',
+  './css/luxury.css',
   './js/main.js',
+  './js/luxury.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
